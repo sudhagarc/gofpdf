@@ -243,6 +243,10 @@ func New(orientationStr, unitStr, sizeStr, fontDirStr string) (f *Fpdf) {
 	return fpdfNew(orientationStr, unitStr, sizeStr, fontDirStr, SizeType{0, 0})
 }
 
+func New2(orientationStr, unitStr, sizeStr, fontDirStr string, width, height float64) (f *Fpdf) {
+	return fpdfNew(orientationStr, unitStr, sizeStr, fontDirStr, SizeType{width, height})
+}
+
 // Ok returns true if no processing errors have occurred.
 func (f *Fpdf) Ok() bool {
 	return f.err == nil
@@ -2925,7 +2929,7 @@ func (f *Fpdf) WriteLinkID(h float64, displayStr string, linkID int) {
 //
 // width indicates the width of the box the text will be drawn in. This is in
 // the unit of measure specified in New(). If it is set to 0, the bounding box
-//of the page will be taken (pageWidth - leftMargin - rightMargin).
+// of the page will be taken (pageWidth - leftMargin - rightMargin).
 //
 // lineHeight indicates the line height in the unit of measure specified in
 // New().
